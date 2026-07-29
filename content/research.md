@@ -38,9 +38,27 @@ paragraphs = [
 
 [[extra.sections.publications]]
 year = "2026"
+venue = "BEA"
+title = "Sakura at BEA 2026 Shared Task 1: What Makes Vocabulary Difficult?"
+href = "https://aclanthology.org/2026.bea-1.84/"
+
+[[extra.sections.publications]]
+year = "2026"
 venue = "Preprint"
 title = "Towards Automated Lexicography: Generating and Evaluating Definitions for Learner’s Dictionaries"
 href = "https://arxiv.org/abs/2601.01842"
+
+[[extra.sections.publications]]
+year = "2025"
+venue = "COLING"
+title = "Beyond Film Subtitles: Is YouTube the Best Approximation of Spoken Vocabulary?"
+href = "https://aclanthology.org/2025.coling-main.641/"
+
+[[extra.sections.publications]]
+year = "2024"
+venue = "TSAR"
+title = "Difficult for Whom? A Study of Japanese Lexical Complexity"
+href = "https://aclanthology.org/2024.tsar-1.8/"
 
 [[extra.sections.publications]]
 year = "2024"

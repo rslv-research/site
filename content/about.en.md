@@ -15,6 +15,13 @@ linkedin = "https://www.linkedin.com/in/joshuatanner2/"
 bio = "Josh has worked on large-scale systems at eBay, NLP research at the University of Washington and University of Tokyo, manga translation at Mantra, and is now a research technical lead at Oracle. As head of Resolve Labs, he focuses on machine learning engineering."
 
 [[extra.team]]
+name = "Adam Nohejl"
+role = "External collaborator"
+photo = ""
+linkedin = "https://www.linkedin.com/in/adamnohejl/"
+bio = "After more than 15 years as an independent iOS developer, Adam earned a doctorate in NLP at NAIST before joining RIKEN as an explainable AI researcher. His NLP for language learning research has won best paper awards at NAACL and BEA. At Resolve Labs, he works on NLP for language learning."
+
+[[extra.team]]
 name = "Jake Hoffman"
 role = "External collaborator"
 photo = "images/icon_jake.png"

@@ -111,4 +111,11 @@ intro_link_path = "@/about.md"
 tag = "ML engineering / Language learning"
 title = "Interactive translation, one word at a time"
 body = "As a consultant to <a href=\"https://pangea.chat/\">PangeaChat</a>, led development of an interactive translation system that let language learners build translations one word at a time from model-suggested options. The system cached language-model decoder states between selections, turned model tokens into usable word choices, and let users efficiently step through decoding one word at a time."
+
+[[extra.sections.projects]]
+tag = "Applied research / Language learning"
+title = "Top-ranked vocabulary difficulty prediction"
+body = "Co-developed Sakura, the winning open-track system in the <a href=\"https://aclanthology.org/2026.bea-1.65/\">BEA 2026 shared task</a> on vocabulary difficulty prediction. The team fine-tuned LLMs with a novel soft-target loss function for continuous difficulty prediction, then combined three model families with linguistic and cross-lingual features. Sakura ranked first for Spanish, German, and Mandarin learner groups."
+href = "https://aclanthology.org/2026.bea-1.84/"
+link_label = "Read the paper"
 +++

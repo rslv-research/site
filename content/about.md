@@ -15,6 +15,13 @@ linkedin = "https://www.linkedin.com/in/joshuatanner2/"
 bio = "eBayで大規模システムを開発し、ワシントン大学と東京大学で自然言語処理を研究した後、Mantraでマンガ翻訳に携わりました。現在はOracleの研究チームで、技術面をリードしています。Resolve Labsでは代表として、機械学習エンジニアリングを中心に手がけています。"
 
 [[extra.team]]
+name = "アダム・ノヘイル"
+role = "外部協力者"
+photo = ""
+linkedin = "https://www.linkedin.com/in/adamnohejl/"
+bio = "15年以上にわたる独立系iOS開発を経て、NAISTで言語学習のための自然言語処理を研究し、博士号を取得。現在は理化学研究所で説明可能AIを研究しています。言語学習に関するNLP研究でNAACLとBEAの最優秀論文賞を受賞。Resolve Labsでも同分野の研究を担当しています。"
+
+[[extra.team]]
 name = "ジェイク・ホフマン"
 role = "外部協力者"
 photo = "images/icon_jake.png"
