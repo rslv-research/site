@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% import "macros/contact-cta.html" as contact_cta %}
+
+{% block content %}
+<header class="rail-hero">
+  <div class="shell">
+    <div class="rail-hero-copy">
+      <h1>{{ page.title }}</h1>
+      <p class="page-lead">{{ page.extra.lead }}</p>
+    </div>
+    <dl class="rail-facts">
+      {% for fact in page.extra.facts %}
+      <div>
+        <dt>{{ fact.label }}</dt>
+        <dd>{{ fact.value }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </div>
+</header>
+
+<div class="rail-main notebook">
+  <div class="shell rail-layout{% if not page.extra.show_rail %} rail-layout-simple{% endif %}">
+    {% if page.extra.show_rail %}
+    <nav class="page-rail" aria-label="{{ page.extra.rail_label }}">
+      <p>{{ page.extra.rail_label }}</p>
+      {% for item in page.extra.sections %}
+      <a href="#{{ item.id }}"><span>{{ item.index }}</span>{{ item.nav }}</a>
+      {% endfor %}
+    </nav>
+    {% endif %}
+
+    <article class="rail-content">
+      {% for item in page.extra.sections %}
+      <section class="rail-section" id="{{ item.id }}">
+        {% if page.extra.show_section_labels %}
+        <p class="rail-section-label">{{ item.index }} / {{ item.label }}</p>
+        {% endif %}
+        <h2>{{ item.title }}</h2>
+
+        {% for paragraph in item.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+
+        {% if item.intro_link_label %}
+        <p>{{ item.intro_link_prefix }}<a href="{{ get_url(path=item.intro_link_path, lang=lang) }}">{{ item.intro_link_label }}</a>{{ item.intro_link_suffix }}</p>
+        {% endif %}
+
+        {% if item.cards %}
+        <div class="rail-card-grid">
+          {% for card in item.cards %}
+          <article class="rail-card">
+            <span>{{ card.index }}</span>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.body }}</p>
+          </article>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if item.projects %}
+        <div class="project-card-list">
+          {% for project in item.projects %}
+          <article class="project-card">
+            <div class="project-card-copy">
+              <p class="project-card-tag">{{ project.tag }}</p>
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.body | safe }}</p>
+              {% if project.href %}
+              <a href="{{ project.href }}" rel="noopener">{{ project.link_label }} <span aria-hidden="true">→</span></a>
+              {% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if item.publications %}
+        <ol class="publication-list">
+          {% for publication in item.publications %}
+          <li>
+            <a href="{{ publication.href }}" rel="noopener">
+              <span class="publication-meta">
+                <span>{{ publication.year }}</span>
+                <small>{{ publication.venue }}</small>
+              </span>
+              <span class="publication-title">{{ publication.title }}</span>
+              <span class="publication-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+
+        {% if item.figure %}
+        <figure class="rail-figure">
+          <img src="{{ get_url(path=item.figure) }}" alt="{{ item.figure_alt }}">
+        </figure>
+        {% endif %}
+      </section>
+      {% endfor %}
+    </article>
+  </div>
+</div>
+
+{% if page.extra.cta_title %}
+{{ contact_cta::contact(title=page.extra.cta_title, body=page.extra.cta_body, label=page.extra.cta_label, email=config.extra.email, title_has_markup=true) }}
+{% endif %}
+{% endblock content %}

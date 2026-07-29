@@ -1,0 +1,20 @@
+base_url = "https://rslv.dev"
+title = "Resolve Labs"
+description = "Practical language technology for people who build and use learning products."
+default_language = "ja"
+compile_sass = false
+minify_html = true
+generate_feeds = false
+build_search_index = false
+
+[markdown]
+smart_punctuation = true
+
+[languages.en]
+title = "Resolve Labs"
+description = "Practical language technology for people who build and use learning products."
+generate_feeds = false
+build_search_index = false
+
+[extra]
+email = "hello@rslv.dev"

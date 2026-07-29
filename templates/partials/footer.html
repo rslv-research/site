@@ -1,0 +1,46 @@
+{% if lang == "ja" %}
+  {% set about_label = "会社について" %}
+  {% set rslv_label = "RSLV Dictionary" %}
+  {% set consulting_label = "コンサルティング" %}
+  {% set research_label = "研究" %}
+  {% set contact_label = "お問い合わせ" %}
+{% else %}
+  {% set about_label = "About" %}
+  {% set rslv_label = "RSLV Dictionary" %}
+  {% set consulting_label = "Consulting" %}
+  {% set research_label = "Research" %}
+  {% set contact_label = "Contact" %}
+{% endif %}
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <address class="company-address">
+        {% if lang == "ja" %}
+          Resolve Labs合同会社<br>
+          〒530-0001<br>
+          大阪府大阪市北区梅田1-1-3<br>
+          大阪駅前第3ビル 29階 1-1-1号室
+        {% else %}
+          Resolve Labs G.K.<br>
+          Room 1-1-1, 29F, Osaka Ekimae No. 3 Building<br>
+          1-1-3 Umeda, Kita-ku, Osaka 530-0001<br>
+          Japan
+        {% endif %}
+      </address>
+    </div>
+    <div>
+      <p class="footer-heading">{% if lang == "ja" %}サイト{% else %}Explore{% endif %}</p>
+      <a href="{{ get_url(path="@/services/rslv-dictionary.md", lang=lang) }}">{{ rslv_label }}</a>
+      <a href="{{ get_url(path="@/services/consulting.md", lang=lang) }}">{{ consulting_label }}</a>
+      <a href="{{ get_url(path="@/research.md", lang=lang) }}">{{ research_label }}</a>
+      <a href="{{ get_url(path="@/about.md", lang=lang) }}">{{ about_label }}</a>
+    </div>
+    <div>
+      <p class="footer-heading">{{ contact_label }}</p>
+      <a href="mailto:{{ config.extra.email }}">{{ config.extra.email }}</a>
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <p>© {{ now() | date(format="%Y") }} {% if lang == "ja" %}Resolve Labs合同会社{% else %}Resolve Labs G.K.{% endif %}</p>
+  </div>
+</footer>

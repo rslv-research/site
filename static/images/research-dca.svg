@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" role="img" aria-labelledby="title desc">
+  <title id="title">Split target and context attention</title>
+  <desc id="desc">A sentence is divided into target expression and surrounding context paths, which are combined to identify the matching meaning.</desc>
+  <style>
+    text { font-family: "Space Grotesk", "Noto Sans", sans-serif; fill: #131718; }
+    .label { font-family: "IBM Plex Mono", monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; fill: #175d66; }
+    .token { font-size: 13px; }
+    .small { font-size: 11px; fill: #637074; }
+    .meaning { font-size: 12px; }
+    .inverse { fill: #fff; }
+    .line { fill: none; stroke: #9ab8bc; stroke-width: 1.5; }
+    .active-line { fill: none; stroke: #175d66; stroke-width: 2; }
+  </style>
+
+  <text class="label" x="24" y="24">SENTENCE</text>
+
+  <g transform="translate(24 38)">
+    <rect width="66" height="30" rx="6" fill="#fff" stroke="#d8dfe1"/>
+    <text class="token" x="33" y="20" text-anchor="middle">The team</text>
+
+    <rect x="72" width="50" height="30" rx="6" fill="#dcefed" stroke="#175d66"/>
+    <text class="token" x="97" y="20" text-anchor="middle" font-weight="600">took</text>
+
+    <rect x="128" width="96" height="30" rx="6" fill="#fff" stroke="#d8dfe1"/>
+    <text class="token" x="176" y="20" text-anchor="middle">the setback</text>
+
+    <rect x="230" width="68" height="30" rx="6" fill="#dcefed" stroke="#175d66"/>
+    <text class="token" x="264" y="20" text-anchor="middle" font-weight="600">in stride</text>
+  </g>
+
+  <path class="active-line" d="M121 68 C121 96 132 96 132 120"/>
+  <path class="active-line" d="M288 68 C288 91 179 96 179 120"/>
+  <path class="line" d="M57 68 C57 97 108 94 108 189"/>
+  <path class="line" d="M200 68 C200 97 149 110 149 189"/>
+
+  <g transform="translate(72 120)">
+    <rect width="152" height="48" rx="24" fill="#175d66"/>
+    <circle cx="26" cy="24" r="9" fill="#dcefed"/>
+    <circle cx="26" cy="24" r="3" fill="#175d66"/>
+    <text class="inverse" x="46" y="28" font-size="11" font-weight="600">TARGET CODES</text>
+  </g>
+
+  <g transform="translate(72 189)">
+    <rect width="152" height="48" rx="24" fill="#fff" stroke="#9ab8bc"/>
+    <circle cx="26" cy="24" r="9" fill="#dcefed"/>
+    <circle cx="26" cy="24" r="3" fill="#637074"/>
+    <text x="46" y="28" font-size="11" font-weight="600">CONTEXT CODES</text>
+  </g>
+
+  <path class="active-line" d="M224 144 C239 144 237 170 259 170"/>
+  <path class="line" d="M224 213 C239 213 237 184 259 184"/>
+
+  <g transform="translate(259 148)">
+    <circle cx="28" cy="28" r="28" fill="#f6fbfc" stroke="#175d66" stroke-width="2"/>
+    <circle cx="20" cy="21" r="3" fill="#175d66"/>
+    <circle cx="36" cy="21" r="3" fill="#9ab8bc"/>
+    <circle cx="20" cy="35" r="3" fill="#9ab8bc"/>
+    <circle cx="36" cy="35" r="3" fill="#175d66"/>
+  </g>
+  <text class="label" x="287" y="221" text-anchor="middle">MATCH</text>
+
+  <path class="line" d="M315 176 C344 176 346 101 377 101"/>
+  <path class="active-line" d="M315 176 C344 176 346 157 377 157"/>
+  <path class="line" d="M315 176 C344 176 346 213 377 213"/>
+
+  <text class="label" x="377" y="58">CANDIDATE MEANINGS</text>
+  <g transform="translate(377 73)">
+    <rect width="157" height="48" rx="7" fill="#fff" stroke="#d8dfe1"/>
+    <text class="meaning" x="14" y="21">physically carried</text>
+    <rect x="14" y="30" width="76" height="3" rx="1.5" fill="#d8dfe1"/>
+
+    <rect y="56" width="157" height="48" rx="7" fill="#dcefed" stroke="#175d66" stroke-width="2"/>
+    <text class="meaning" x="14" y="77" font-weight="600">handled calmly</text>
+    <rect x="14" y="86" width="108" height="3" rx="1.5" fill="#175d66"/>
+
+    <rect y="112" width="157" height="48" rx="7" fill="#fff" stroke="#d8dfe1"/>
+    <text class="meaning" x="14" y="133">moved step by step</text>
+    <rect x="14" y="142" width="88" height="3" rx="1.5" fill="#d8dfe1"/>
+  </g>
+</svg>

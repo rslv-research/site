@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="about-hero">
+  <div class="shell about-hero-inner">
+    <h1>{{ page.title }}</h1>
+    <p class="page-lead">{{ page.extra.lead }}</p>
+  </div>
+</header>
+
+<section class="section about-team">
+  <div class="shell">
+    <h2>{{ page.extra.team_title }}</h2>
+
+    <div class="team-grid">
+      {% for member in page.extra.team %}
+      <article class="team-member{% if loop.first %} team-member-founder{% endif %}">
+        <div class="team-portrait">
+          {% if member.photo %}
+          <img src="{{ get_url(path=member.photo) }}" alt="">
+          {% endif %}
+        </div>
+        {% if member.name %}
+        <h3>
+          {% if member.linkedin %}
+          <a href="{{ member.linkedin }}">{{ member.name }}</a>
+          {% else %}
+          {{ member.name }}
+          {% endif %}
+        </h3>
+        {% endif %}
+        <p class="team-role">{{ member.role }}</p>
+        {% if member.bio %}
+        <p class="team-bio">{{ member.bio | safe }}</p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="about-closing-band" aria-hidden="true"></div>
+{% endblock content %}

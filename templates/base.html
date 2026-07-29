@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  {% if section %}
+    {% set meta_title = section.title %}
+    {% set meta_description = section.description | default(value=config.description) %}
+  {% elif page %}
+    {% set meta_title = page.title %}
+    {% set meta_description = page.description | default(value=config.description) %}
+  {% else %}
+    {% set meta_title = "Page not found" %}
+    {% set meta_description = "The requested page could not be found." %}
+  {% endif %}
+  {% if current_url %}
+    {% set meta_url = current_url %}
+  {% else %}
+    {% set meta_url = config.base_url ~ "/404.html" %}
+  {% endif %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#175d66">
+  <title>{% if meta_title == "Resolve Labs" %}{{ meta_title }}{% else %}{{ meta_title }} · Resolve Labs{% endif %}</title>
+  <meta name="description" content="{{ meta_description }}">
+  <link rel="canonical" href="{{ meta_url | safe }}">
+  {% if section %}
+  {% for translation in section.translations %}
+  {% if translation.lang != lang %}
+  <link rel="alternate" hreflang="{{ translation.lang }}" href="{{ translation.permalink | safe }}">
+  {% endif %}
+  {% endfor %}
+  {% elif page %}
+  {% for translation in page.translations %}
+  {% if translation.lang != lang %}
+  <link rel="alternate" hreflang="{{ translation.lang }}" href="{{ translation.permalink | safe }}">
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  <link rel="alternate" hreflang="{{ lang }}" href="{{ meta_url | safe }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Resolve Labs">
+  <meta property="og:title" content="{{ meta_title }}">
+  <meta property="og:description" content="{{ meta_description }}">
+  <meta property="og:url" content="{{ meta_url | safe }}">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="{{ get_url(path="images/rslv-logo.svg") }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ get_url(path="css/site.css") }}">
+  {% if lang == "ja" %}
+  <script>
+    (() => {
+      try {
+        const path = window.location.pathname;
+        if (path === "/en" || path.startsWith("/en/")) return;
+
+        const storageKey = "rslv-language";
+        let preferredLanguage = window.localStorage.getItem(storageKey);
+
+        if (preferredLanguage !== "ja" && preferredLanguage !== "en") {
+          preferredLanguage = null;
+          const browserLanguages = navigator.languages || [navigator.language];
+
+          for (const browserLanguage of browserLanguages) {
+            const language = browserLanguage.toLowerCase().split("-")[0];
+            if (language === "ja" || language === "en") {
+              preferredLanguage = language;
+              break;
+            }
+          }
+        }
+
+        if (preferredLanguage === "en") {
+          const englishPath = path === "/" ? "/en/" : `/en${path}`;
+          window.location.replace(`${englishPath}${window.location.search}${window.location.hash}`);
+        }
+      } catch (_) {
+        // Japanese remains the default if browser preferences or storage are unavailable.
+      }
+    })();
+  </script>
+  {% endif %}
+</head>
+<body>
+  <a class="skip-link" href="#main">{% if lang == "ja" %}本文へ移動{% else %}Skip to content{% endif %}</a>
+  {% include "partials/header.html" %}
+  <main id="main" tabindex="-1">
+    {% block content %}{% endblock content %}
+  </main>
+  {% include "partials/footer.html" %}
+  <script src="{{ get_url(path="js/site.js") }}" defer></script>
+</body>
+</html>

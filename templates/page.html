@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import "macros/contact-cta.html" as contact_cta %}
+
+{% block content %}
+<header class="page-hero">
+  <div class="shell page-hero-grid">
+    <p class="eyebrow">{{ page.extra.eyebrow }}</p>
+    <div>
+      <h1>{{ page.title }}</h1>
+      <p class="page-lead">{{ page.extra.lead }}</p>
+    </div>
+  </div>
+</header>
+
+<article class="shell page-content">
+  {{ page.content | safe }}
+</article>
+
+{% if page.extra.cta_title %}
+{{ contact_cta::contact(title=page.extra.cta_title, body=page.extra.cta_body, label=page.extra.cta_label, email=config.extra.email) }}
+{% endif %}
+{% endblock content %}

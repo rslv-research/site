@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="error-page">
+  <div class="shell error-grid">
+    <div lang="en">
+      <p class="eyebrow">404</p>
+      <h1>That page isn’t here.</h1>
+      <p>The address may have changed, or the page may no longer exist.</p>
+      <a class="button button-primary" href="/en/">Return home</a>
+    </div>
+    <div lang="ja">
+      <p class="eyebrow">404</p>
+      <h2>ページが見つかりません。</h2>
+      <p>URLが変更されたか、ページが削除された可能性があります。</p>
+      <a class="button button-primary" href="/">ホームへ戻る</a>
+    </div>
+  </div>
+</section>
+{% endblock content %}

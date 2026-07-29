@@ -1,0 +1,72 @@
+{% if lang == "ja" %}
+  {% set services_label = "サービス" %}
+  {% set rslv_label = "RSLV Dictionary" %}
+  {% set consulting_label = "コンサルティング" %}
+  {% set research_label = "研究" %}
+  {% set about_label = "会社について" %}
+  {% set menu_label = "メニュー" %}
+  {% set language_label = "English" %}
+{% else %}
+  {% set services_label = "Services" %}
+  {% set rslv_label = "RSLV Dictionary" %}
+  {% set consulting_label = "Consulting" %}
+  {% set research_label = "Research" %}
+  {% set about_label = "About" %}
+  {% set menu_label = "Menu" %}
+  {% set language_label = "日本語" %}
+{% endif %}
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="company-name" href="{{ get_url(path="@/_index.md", lang=lang) }}">
+      <img src="{{ get_url(path="images/rslv-logo.svg") }}" alt="" aria-hidden="true">
+      <span>Resolve Labs</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="{% if lang == "ja" %}メインナビゲーション{% else %}Main navigation{% endif %}">
+      <details class="services-menu">
+        <summary>{{ services_label }}</summary>
+        <div class="submenu">
+          <a href="{{ get_url(path="@/services/rslv-dictionary.md", lang=lang) }}">
+            <span>{{ rslv_label }}</span>
+            <small>{% if lang == "ja" %}文脈対応AI辞書{% else %}Contextual AI dictionary{% endif %}</small>
+          </a>
+          <a href="{{ get_url(path="@/services/consulting.md", lang=lang) }}">
+            <span>{{ consulting_label }}</span>
+            <small>{% if lang == "ja" %}言語・AIエンジニアリング{% else %}Language and AI engineering{% endif %}</small>
+          </a>
+        </div>
+      </details>
+      <a href="{{ get_url(path="@/research.md", lang=lang) }}">{{ research_label }}</a>
+      <a href="{{ get_url(path="@/about.md", lang=lang) }}">{{ about_label }}</a>
+    </nav>
+
+    <div class="header-actions">
+      {% if section %}
+      {% for translation in section.translations %}
+      {% if translation.lang != lang %}
+        <a class="language-link" href="{{ translation.permalink | safe }}" hreflang="{{ translation.lang }}" data-language-choice="{{ translation.lang }}">{{ language_label }}</a>
+      {% endif %}
+      {% endfor %}
+      {% elif page %}
+      {% for translation in page.translations %}
+      {% if translation.lang != lang %}
+        <a class="language-link" href="{{ translation.permalink | safe }}" hreflang="{{ translation.lang }}" data-language-choice="{{ translation.lang }}">{{ language_label }}</a>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+        <a class="language-link" href="/en/" hreflang="en" data-language-choice="en">English</a>
+      {% endif %}
+      <details class="mobile-menu">
+        <summary aria-label="{{ menu_label }}"><span>{{ menu_label }}</span></summary>
+        <nav aria-label="{% if lang == "ja" %}モバイルナビゲーション{% else %}Mobile navigation{% endif %}">
+          <span class="mobile-group-label">{{ services_label }}</span>
+          <a href="{{ get_url(path="@/services/rslv-dictionary.md", lang=lang) }}">{{ rslv_label }}</a>
+          <a href="{{ get_url(path="@/services/consulting.md", lang=lang) }}">{{ consulting_label }}</a>
+          <a href="{{ get_url(path="@/research.md", lang=lang) }}">{{ research_label }}</a>
+          <a href="{{ get_url(path="@/about.md", lang=lang) }}">{{ about_label }}</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% import "macros/contact-cta.html" as contact_cta %}
+{% import "macros/language-example.html" as language_example %}
+
+{% block content %}
+<section class="home-hero">
+  <div class="shell hero-grid">
+    <div>
+      <h1>{{ section.extra.hero_title | safe }}</h1>
+      <p class="hero-lead">{{ section.extra.hero_body }}</p>
+      <div class="button-row">
+        <a class="button button-primary" href="{{ get_url(path="@/services/rslv-dictionary.md", lang=lang) }}">{{ section.extra.hero_primary_label }}</a>
+        <a class="button button-secondary" href="mailto:{{ config.extra.email }}">{{ section.extra.hero_secondary_label }}</a>
+      </div>
+    </div>
+    <img class="hero-logo" src="{{ get_url(path="images/rslv-logo.svg") }}" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<section class="section product-section">
+  <div class="home-section-marker" aria-hidden="true">
+    <span>{{ section.extra.product_index }}</span>
+    <small>{{ section.extra.product_index_label }}</small>
+  </div>
+  <div class="shell product-grid">
+    <div class="product-copy">
+      <div class="product-copy-main">
+        <h2>{{ section.extra.product_title | safe }}</h2>
+        <p>{{ section.extra.product_body }}</p>
+      </div>
+      <a class="text-link" href="{{ get_url(path="@/services/rslv-dictionary.md", lang=lang) }}">{{ section.extra.product_link }} <span aria-hidden="true">→</span></a>
+    </div>
+    {% if lang == "ja" %}
+      {% set discarded_label = "選択されなかった意味" %}
+    {% else %}
+      {% set discarded_label = "Meanings not selected" %}
+    {% endif %}
+    {{ language_example::card(
+      label=section.extra.example_label,
+      sentence=section.extra.example_sentence,
+      headword=section.extra.example_headword,
+      pos=section.extra.example_pos,
+      meaning=section.extra.example_meaning,
+      note=section.extra.example_note,
+      discarded_one=section.extra.example_discarded_one,
+      discarded_two=section.extra.example_discarded_two,
+      discarded_label=discarded_label
+    ) }}
+  </div>
+</section>
+
+<section class="section consulting-band">
+  <div class="home-section-marker" aria-hidden="true">
+    <span>{{ section.extra.consulting_index }}</span>
+    <small>{{ section.extra.consulting_index_label }}</small>
+  </div>
+  <div class="shell band-grid">
+    <div>
+      <h2>{{ section.extra.consulting_title }}</h2>
+      <p>{{ section.extra.consulting_body }}</p>
+      <a class="text-link" href="{{ get_url(path="@/services/consulting.md", lang=lang) }}">{{ section.extra.consulting_link }} <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section research-band">
+  <div class="home-section-marker" aria-hidden="true">
+    <span>{{ section.extra.research_index }}</span>
+    <small>{{ section.extra.research_index_label }}</small>
+  </div>
+  <div class="shell band-grid research-grid">
+    <div class="research-copy">
+      <div class="research-copy-main">
+      <h2>{{ section.extra.research_title | safe }}</h2>
+        <p>{{ section.extra.research_body }}</p>
+      </div>
+      <a class="text-link" href="{{ get_url(path="@/research.md", lang=lang) }}">{{ section.extra.research_link }} <span aria-hidden="true">→</span></a>
+    </div>
+    <figure class="research-graphic">
+      <img src="{{ get_url(path="images/research-dca.svg") }}" alt="{{ section.extra.research_graphic_alt }}">
+    </figure>
+  </div>
+</section>
+
+{{ contact_cta::contact(title=section.extra.cta_title, body=section.extra.cta_body, label=section.extra.cta_label, email=config.extra.email, title_has_markup=true) }}
+{% endblock content %}

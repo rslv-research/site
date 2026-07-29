@@ -1,0 +1,20 @@
+{% macro card(label, sentence, headword, pos, meaning, note, discarded_one="", discarded_two="", discarded_label="") %}
+<div class="language-example">
+  <p class="technical-label">{{ label }}</p>
+  <p class="example-sentence">{{ sentence | safe }}</p>
+  <div class="example-result">
+    <div>
+      <strong>{{ headword }}</strong>
+      <span>{{ pos }}</span>
+    </div>
+    <p lang="ja">{{ meaning }}</p>
+  </div>
+  {% if discarded_one or discarded_two %}
+    <div class="discarded-senses" aria-label="{{ discarded_label }}">
+      {% if discarded_one %}<span>{{ discarded_one }}</span>{% endif %}
+      {% if discarded_two %}<span>{{ discarded_two }}</span>{% endif %}
+    </div>
+  {% endif %}
+  <p class="example-note">{{ note }}</p>
+</div>
+{% endmacro card %}

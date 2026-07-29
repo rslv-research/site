@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% import "macros/contact-cta.html" as contact_cta %}
+
+{% block content %}
+<header class="dictionary-hero">
+  <div class="shell dictionary-hero-inner">
+    <h1>{{ page.extra.hero_title }}</h1>
+    <p class="page-lead">{{ page.extra.lead }}</p>
+  </div>
+</header>
+
+<section class="section dictionary-section dictionary-analysis">
+  <div class="shell">
+    <p class="dictionary-section-label">
+      <span>{{ page.extra.analysis_index }}</span>
+      {{ page.extra.analysis_label }}
+    </p>
+    <div class="dictionary-section-grid">
+      <div class="dictionary-copy">
+        <h2>{{ page.extra.analysis_title }}</h2>
+        {% for paragraph in page.extra.analysis_paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+      </div>
+      <div class="dictionary-card-stack">
+        <article class="analysis-example-card">
+          <p class="technical-label">{{ page.extra.analysis_card_label }}</p>
+          <div class="analysis-example-list">
+            {% for example in page.extra.analysis_examples %}
+            <section class="analysis-example">
+              <p class="analysis-example-sentence">{{ example.sentence | safe }}</p>
+              <div class="analysis-example-results">
+                {% for item in example.items %}
+                <div class="analysis-example-result">
+                  <div>
+                    <strong>{{ item.headword }}</strong>
+                    <span>{{ item.pos }}</span>
+                  </div>
+                  <p lang="{{ item.meaning_lang | default(value='ja') }}">{{ item.meaning }}</p>
+                </div>
+                {% endfor %}
+              </div>
+            </section>
+            {% endfor %}
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dictionary-section dictionary-data">
+  <div class="shell">
+    <p class="dictionary-section-label">
+      <span>{{ page.extra.data_index }}</span>
+      {{ page.extra.data_label }}
+    </p>
+    <div class="dictionary-section-grid dictionary-section-grid-reversed">
+      <div class="dictionary-copy">
+        <h2>{{ page.extra.data_title }}</h2>
+        {% for paragraph in page.extra.data_paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+      </div>
+      <div class="dictionary-card-stack">
+        {% for entry in page.extra.data_examples %}
+        <article class="lexical-entry-card">
+          <p class="technical-label">{{ entry.label }}</p>
+          <header class="lexical-entry-head">
+            <h3>{{ entry.headword }}</h3>
+            <span>{{ entry.pos }}</span>
+          </header>
+          <dl class="lexical-entry-forms">
+            <dt>{{ entry.forms_label }}</dt>
+            <dd>{{ entry.forms }}</dd>
+          </dl>
+          <ol class="lexical-senses">
+            {% for sense in entry.senses %}
+            <li>
+              <span>{{ sense.index }}</span>
+              <div>
+                <div class="lexical-sense-heading">
+                  <p>{{ sense.definition }}</p>
+                  {% if sense.label %}
+                  <span class="lexical-sense-label">{{ sense.label }}</span>
+                  {% endif %}
+                </div>
+                <strong lang="ja">{{ sense.translation }}</strong>
+              </div>
+            </li>
+            {% endfor %}
+          </ol>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dictionary-section dictionary-pipeline">
+  <div class="shell">
+    <p class="dictionary-section-label">
+      <span>{{ page.extra.pipeline_index }}</span>
+      {{ page.extra.pipeline_label }}
+    </p>
+    <div class="dictionary-pipeline-copy">
+      <h2>{{ page.extra.pipeline_title }}</h2>
+      {% for paragraph in page.extra.pipeline_paragraphs %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
+    </div>
+
+    <div class="pipeline-flow" aria-label="{{ page.extra.pipeline_title }}">
+      {% for step in page.extra.pipeline_steps %}
+      <div class="pipeline-step pipeline-step-{{ step.kind }}">
+        {% if step.tag %}
+        <span class="pipeline-step-tag">{{ step.tag }}</span>
+        {% endif %}
+        <strong>{{ step.title }}</strong>
+        <small>{{ step.body }}</small>
+      </div>
+      {% if not loop.last %}
+      <span class="pipeline-arrow" aria-hidden="true">→</span>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ contact_cta::contact(title=page.extra.cta_title, body=page.extra.cta_body, label=page.extra.cta_label, email=config.extra.email) }}
+{% endblock content %}

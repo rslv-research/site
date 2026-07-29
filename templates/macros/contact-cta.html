@@ -1,0 +1,11 @@
+{% macro contact(title, body, label, email, title_has_markup=false) %}
+<section class="section cta-section">
+  <div class="shell cta-inner">
+    <div>
+      <h2>{% if title_has_markup %}{{ title | safe }}{% else %}{{ title }}{% endif %}</h2>
+      <p>{{ body }}</p>
+    </div>
+    <a class="button button-light" href="mailto:{{ email }}">{{ label }}</a>
+  </div>
+</section>
+{% endmacro contact %}
