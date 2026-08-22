@@ -12,7 +12,7 @@ name = "Josh Tanner"
 role = "Founder"
 photo = "images/josh_icon_offset_1pct.png"
 linkedin = "https://www.linkedin.com/in/joshuatanner2/"
-bio = "Josh has worked on large-scale systems at eBay, NLP research at the University of Washington and University of Tokyo, manga translation at Mantra, and is now a research technical lead at Oracle. As head of Resolve Labs, he focuses on machine learning engineering."
+bio = "Josh got his start in programming through game development in high school, with a project reaching more than a million weekly plays. He went on to build large-scale systems at eBay, conduct NLP research at the University of Washington and University of Tokyo, and work on manga translation at Mantra. He is now a research technical lead at Oracle. As head of Resolve Labs, he focuses on machine learning engineering."
 
 [[extra.team]]
 name = "Adam Nohejl"
